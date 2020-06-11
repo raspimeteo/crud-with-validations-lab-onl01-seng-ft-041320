@@ -30,7 +30,7 @@ class SongsController < ApplicationController
 
     def update
         @song = Song.find(params[:id])
-        if @song.update_attributes(song_params)
+        if @song.update_attributes(song_params(:title, :released, :release_year, :artist_name, :genre))
           flash[:success] = "Song was successfully updated"
           redirect_to @song
         else
@@ -60,8 +60,8 @@ class SongsController < ApplicationController
     
     private
 
-    def song_params
-        params.require(:song).permit(:title, :released, :release_year, :artist_name, :genre)
+    def song_params(*args)
+        params.require(:song).permit(*args)
     end
     
 end
