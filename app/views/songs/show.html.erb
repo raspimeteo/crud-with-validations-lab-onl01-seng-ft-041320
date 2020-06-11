@@ -1,2 +1,5 @@
 <%= @song.title %>
+<% if flash[:message] %>
+  <%= flash[:message] %>
+<% end %>
 <%= link_to "Delete", @song, method: :delete, data: { confirm: "Really?" } %>

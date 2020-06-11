@@ -13,7 +13,7 @@ class SongsController < ApplicationController
         @song = Song.new(song_params(:title, :released, :release_year, :artist_name, :genre))
         
         if @song.save
-          flash[:success] = "Song successfully created"
+          flash[:message] = "Song successfully created"
           redirect_to @song
         else
           flash[:error] = "Something went wrong"
