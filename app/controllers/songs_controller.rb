@@ -42,7 +42,6 @@ class SongsController < ApplicationController
     end
     
     def destroy
-        # @song = Song.find(params[:id])
         if @song.destroy
             flash[:success] = 'Song was successfully deleted.'
             redirect_to songs_url
@@ -51,10 +50,6 @@ class SongsController < ApplicationController
             redirect_to songs_url
         end
     end
-    
-    
-    
-    
     
     private
 
