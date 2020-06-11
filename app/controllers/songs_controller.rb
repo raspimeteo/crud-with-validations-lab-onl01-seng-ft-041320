@@ -9,7 +9,7 @@ class SongsController < ApplicationController
     end
 
     def create
-        @song = Song.new(song_params)
+        @song = Song.new(song_params(:title, :released, :release_year, :artist_name, :genre))
         
         if @song.save
           flash[:success] = "Song successfully created"
