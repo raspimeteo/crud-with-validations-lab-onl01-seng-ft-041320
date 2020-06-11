@@ -7,7 +7,6 @@ class SongsController < ApplicationController
     end
 
     def show
-        # @song = Song.find(params[:id])
     end
 
     def create
@@ -23,15 +22,12 @@ class SongsController < ApplicationController
     end
 
     def show
-        # @song = Song.find(params[:id])
     end
 
     def edit
-        # @song = Song.find(params[:id])
     end
 
     def update
-        # @song = Song.find(params[:id])
         if @song.update_attributes(song_params(:title, :released, :release_year, :artist_name, :genre))
           flash[:success] = "Song was successfully updated"
           redirect_to @song
