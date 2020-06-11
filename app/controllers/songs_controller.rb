@@ -1,11 +1,13 @@
 require 'pry'
 class SongsController < ApplicationController
+
+    before_action :find_song, only: [:show, :edit, :update, :destroy]
     def index
         @songs = Song.all
     end
 
     def show
-        @song = Song.find(params[:id])
+        # @song = Song.find(params[:id])
     end
 
     def create
@@ -21,15 +23,15 @@ class SongsController < ApplicationController
     end
 
     def show
-        @song = Song.find(params[:id])
+        # @song = Song.find(params[:id])
     end
 
     def edit
-        @song = Song.find(params[:id])
+        # @song = Song.find(params[:id])
     end
 
     def update
-        @song = Song.find(params[:id])
+        # @song = Song.find(params[:id])
         if @song.update_attributes(song_params(:title, :released, :release_year, :artist_name, :genre))
           flash[:success] = "Song was successfully updated"
           redirect_to @song
@@ -44,7 +46,7 @@ class SongsController < ApplicationController
     end
     
     def destroy
-        @song = Song.find(params[:id])
+        # @song = Song.find(params[:id])
         if @song.destroy
             flash[:success] = 'Song was successfully deleted.'
             redirect_to songs_url
@@ -62,6 +64,10 @@ class SongsController < ApplicationController
 
     def song_params(*args)
         params.require(:song).permit(*args)
+    end
+
+    def find_song
+        @song = Song.find(params[:id])
     end
     
 end
